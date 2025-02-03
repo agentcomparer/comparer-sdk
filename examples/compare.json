@@ -1,0 +1,22 @@
+{
+    "models": [
+        {
+            "provider": "mistral",
+            "model_family": "premier_models",
+            "model_name": "mistral-large-24.11"
+        },
+        {
+            "provider": "together",
+            "model_family": "qwen",
+            "model_name": "Qwen_2.5_7B"
+        }
+    ],
+    "input_tokens": 1000,
+    "output_tokens": 500,
+    "metadata": {
+        "agent_id": "cli-sample",
+        "task_id": "comparison-test",
+        "message_id": "msg123",
+        "thread_id": "thread456"
+    }
+}

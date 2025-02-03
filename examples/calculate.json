@@ -1,0 +1,24 @@
+{
+    "calculations": [
+        {
+            "provider": "aws",
+            "model_family": "meta_llama",
+            "model_name": "llama_3.2_instruct_3b",
+            "input_tokens": 1000,
+            "output_tokens": 500
+        },
+        {
+            "provider": "mistral",
+            "model_family": "fine_tuning",
+            "model_name": "mistral-small",
+            "input_tokens": 2000,
+            "output_tokens": 1000
+        }
+    ],
+    "metadata": {
+        "agent_id": "cli-sample",
+        "task_id": "calculation-test",
+        "message_id": "msg789",
+        "thread_id": "thread012"
+    }
+}
