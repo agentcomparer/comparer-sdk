@@ -1,6 +1,6 @@
 # Agent Comparer CLI
 
-A command-line interface for interacting with the Agent Comparer API to analyze and compare AI models and agents
+A command-line interface for interacting with the [Agent Comparer](https://agentcomparer.com) API to analyze and compare AI models and agents.
 
 ## Setup
 
@@ -39,7 +39,7 @@ chmod +x comparer-cli.py
 
 ### Configuration
 
-Set your API key as an environment variable:
+Set your API key as an environment variable. You can find the API key in your [account profile](https://agentcomparer.com/profile)
 
 ```bash
 # On Windows (Command Prompt):
@@ -141,7 +141,44 @@ python comparer-cli.py sample-spec calculate > calculate-spec.json
 2. Edit the generated file as needed and run the calculation:
 ```bash
 python comparer-cli.py calculate calculate-spec.json
+{
+  "calculations": [
+    {
+      "provider": "aws",
+      "model_family": "meta_llama",
+      "model_name": "llama_3.2_instruct_3b",
+      "input_tokens": 1000,
+      "output_tokens": 500,
+      "input_price": 0.15,
+      "output_price": 0.15,
+      "input_cost": 0.00015,
+      "output_cost": 7.5e-05,
+      "total_cost": 0.000225
+    },
+    {
+      "provider": "mistral",
+      "model_family": "fine_tuning",
+      "model_name": "mistral-small",
+      "input_tokens": 2000,
+      "output_tokens": 1000,
+      "input_price": 0.2,
+      "output_price": 0.6,
+      "input_cost": 0.0004,
+      "output_cost": 0.0006,
+      "total_cost": 0.001
+    }
+  ],
+  "total_cost": 0.001225,
+  "metadata": {
+    "agent_id": "cli-sample",
+    "task_id": "calculation-test",
+    "message_id": "msg789",
+    "thread_id": "thread012"
+  },
+  "transaction_id": "zRCAxefgeHiAoYhndFdyrA"
+}
 ```
+
 
 ### Sample Specifications
 
@@ -153,6 +190,57 @@ python comparer-cli.py sample-spec compare > compare-spec.json
 
 # Generate sample calculate specification
 python comparer-cli.py sample-spec calculate > calculate-spec.json
+{
+  "comparisons": [
+    {
+      "provider": "mistral",
+      "model_family": "premier_models",
+      "model_name": "mistral-large-24.11",
+      "input_tokens": 1000,
+      "output_tokens": 500,
+      "input_price": 2.0,
+      "output_price": 6.0,
+      "input_cost": 0.002,
+      "output_cost": 0.003,
+      "total_cost": 0.005
+    },
+    {
+      "provider": "together",
+      "model_family": "qwen",
+      "model_name": "Qwen_2.5_7B",
+      "input_tokens": 1000,
+      "output_tokens": 500,
+      "input_price": 0.3,
+      "output_price": 0.3,
+      "input_cost": 0.0003,
+      "output_cost": 0.00015,
+      "total_cost": 0.00045
+    }
+  ],
+  "cheapest_option": {
+    "provider": "together",
+    "model_family": "qwen",
+    "model_name": "Qwen_2.5_7B",
+    "input_tokens": 1000,
+    "output_tokens": 500,
+    "input_price": 0.3,
+    "output_price": 0.3,
+    "input_cost": 0.0003,
+    "output_cost": 0.00015,
+    "total_cost": 0.00045
+  },
+  "token_counts": {
+    "input_tokens": 1000,
+    "output_tokens": 500
+  },
+  "metadata": {
+    "agent_id": "cli-sample",
+    "task_id": "comparison-test",
+    "message_id": "msg123",
+    "thread_id": "thread456"
+  },
+  "transaction_id": "GqFs3w3xN8eejU4r6EgX9Q"
+}
 ```
 
 The generated files will include the necessary metadata and randomly selected models for each command.

@@ -88,10 +88,15 @@ class ApiClient:
         return response.json()
 
 @click.group()
-def cli():
+@click.option("--server", default=None, help="Run against a particular server")
+def cli(server):
     """CLI tool for interacting with the Agent Comparer API"""
     if not API_KEY:
         raise click.ClickException("COMPARER_API_KEY environment variable not set")
+
+    global BASE_URL
+    if server:
+        BASE_URL = server
 
 @cli.command()
 @click.option('--search', help='Search string to filter models', default='')
